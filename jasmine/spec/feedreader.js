@@ -37,19 +37,19 @@ $(function() {
 
         // Ensures the menu appears/disappears when the menu icon is clicked 
         it('changes visibility when menu icon is clicked', function() {
-            $menuIcon.trigger('click');
+            $menuIcon.click();
             expect($body.hasClass('menu-hidden')).toBe(false);
-            $menuIcon.trigger('click');
+            $menuIcon.click();
             expect($body.hasClass('menu-hidden')).toBe(true);            
         });
     });
     // Initial Entries test suite
-    describe('Initial Entries', function() {  
+    describe('Initial Entries', function() {
+        // check whether async function is ready  
         beforeEach(function(done) {
             setTimeout(function() {
                 loadFeed(0);
                 done();
-                
             }, 2000);            
         });
 
@@ -59,15 +59,22 @@ $(function() {
             done();
         });
     });
-    /* TODO: Write a new test suite named "New Feed Selection" */
-    // describe('New Feed Selection', function() {
-    //     beforeEach(function(done) {
-
-    //     });
+    // New Feed Selection test suite
+    describe('New Feed Selection', function() {
+        beforeEach(function(done) {
+            setTimeout(function () {
+                loadFeed(0);
+                done();
+            }, 2000);            
+        });
     
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-    // });
+        it('when a new feed is loaded, the content changes', function(done) {
+            expect($('.feed').first().text().length).toBeGreaterThan(0);
+            done();
+        })
+    });
 }());
