@@ -5,8 +5,8 @@
  * use of. It also uses the Handlebars templating library and
  * jQuery.
  */
-console.log($('body').children())
-// The names and URLs to all of the feeds we'd like available.
+
+ // The names and URLs to all of the feeds we'd like available.
 var allFeeds = [
     {
         name: 'Udacity Blog',
