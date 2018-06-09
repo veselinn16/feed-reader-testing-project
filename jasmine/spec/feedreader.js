@@ -48,8 +48,7 @@ $(function() {
         // check whether async function is ready  
         beforeEach(function(done) {
             setTimeout(function() {
-                loadFeed(0);
-                done();
+                loadFeed(0, done);
             }, 2000);            
         });
 
@@ -61,19 +60,17 @@ $(function() {
     });
     // New Feed Selection test suite
     describe('New Feed Selection', function() {
+        let initialFeed;
         beforeEach(function(done) {
+            initialFeed = $('.feed').first().text();
             setTimeout(function () {
-                loadFeed(0);
-                done();
+                loadFeed(1, done);
             }, 2000);            
         });
     
-        /* TODO: Write a test that ensures when a new feed is loaded
-         * by the loadFeed function that the content actually changes.
-         * Remember, loadFeed() is asynchronous.
-         */
+        // Ensures when a new feed is loaded by the loadFeed function that the content actually changes.
         it('when a new feed is loaded, the content changes', function(done) {
-            expect($('.feed').first().text().length).toBeGreaterThan(0);
+            expect($('.feed').first().text()).not.toEqual(initialFeed);
             done();
         })
     });
